@@ -30,3 +30,11 @@ countdown({one: 10});
 countdown(options);
 
 countdown(getOptions());
+
+function addValues(...values) {
+    let sum = 0;
+    for(let value of values){
+        sum += value;
+    }
+    return sum;
+}
