@@ -1,17 +1,32 @@
-var container = document.getElementById("container");
+let array = [123, "Pick up dry cleaning", false];
+let [ id, title, completed] = array;
 
-function Counter(el){
+console.log(String(id) + title + completed);
 
-    this.count = 0;
-
-    el.innerHTML = this.count;
-
-    el.addEventListener('click', () => {
-        this.count += 1;
-        el.innerHTML = this.count;
-    });
+let options = {
+    one: 20,
+    two: 4,
+    three: 2
 }
 
-new Counter(container);
+function getOptions (){
+    return {
+        one: 30,
+        two: 10,
+        three: 10
+    }
+}
 
-let array = [1, 2, 3].filter(x => x > 0);
+function countdown({one, two: final = 0,
+                       three: interval = 1, one: count}){
+
+    while(count > final){
+        count -= interval;
+        console.log(count);
+    }
+}
+
+countdown({one: 10});
+countdown(options);
+
+countdown(getOptions());
