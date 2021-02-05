@@ -1,15 +1,15 @@
 
-interface Todo {
-    name: string;
-    completed ?: boolean;
+interface jQuery {
+    (selector : string) : HTMLElement;
+    version : number;
 }
 
-interface ITodoService {
-    add(todo: Todo) : Todo;
-    delete(todoId: number) : void;
-    getAll() : Todo[];
-    getById(todoId : number) : Todo;
+// var $ = <jQuery> function (selector) {
+let $ = <jQuery> function (selector) {
+    //return document.getElementById(selector);
 }
 
-let todo : Todo = { name: "get measurements" };
-let todo2 : Todo = { name: "calculate body fat", completed: false };
+$.version = 1.12;
+
+let element = $('container');
+element.
