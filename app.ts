@@ -1,44 +1,22 @@
-var $ = <jQuery>function(selector: string) {
-    // Find DOM element
-}
-
-$.version = 1.18;
-
-
 interface Todo {
-    name: string;
-    completed?: boolean;
+    name: string,
+    state: TodoState
 }
 
-interface jQuery {
-    (selector: (string | any)): jQueryElement;
-    fn: any;
-    version: number;
+var todo: Todo = {
+    name: "Pick up dry cleaning",
+    state: TodoState.New
 }
 
-interface jQueryElement {
-    data(name: string): any;
-    data(name: string, data: any): jQueryElement;
+enum TodoState {
+    New = 1,
+    Active,
+    Complete,
+    Delete
 }
 
-interface jQueryElement {
-    todo(): Todo;
-    todo(todo: Todo): jQueryElement;
-}
-
-$.fn.todo = function(todo?: Todo): Todo {
-
-    if(todo) {
-        $(this).data('todo', todo)
-    } else {
-        return $(this).data('todo');
+function Delete(todo: Todo) {
+    if (todo.state != TodoState.Complete) {
+        throw "Can't delete incomplete task!"
     }
-
 }
-
-var todo = { name: "Pick up drycleaning" };
-var container = $('#container');
-container.data('todo', todo)
-var savedTodo = container.data('todo');
-
-container.todo(todo)
